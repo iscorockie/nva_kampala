@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$NVA_KAMPALA — Creator Coin on Zora</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="$nva_kampala is a Creator Coin on Zora, built on the Base network. Building on-chain from Kampala, Uganda. Every post fuels the market. Every trade earns rewards.">
+<meta name="keywords" content="nva_kampala, creator coin, Zora, Base network, crypto, Uganda, Kampala, Web3">
+<meta name="author" content="nva_kampala">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / Social Sharing -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zora.co/@nva_kampala">
+<meta property="og:title" content="$NVA_KAMPALA — Creator Coin on Zora">
+<meta property="og:description" content="Building on-chain from East Africa. Every post fuels the market. Every trade earns rewards. Buy $nva_kampala on Zora.">
+<meta property="og:image" content="https://zora.co/@nva_kampala/og-image">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="$NVA_KAMPALA — Creator Coin on Zora">
+<meta name="twitter:description" content="Building on-chain from East Africa. Every post fuels the market. Every trade earns rewards.">
+
+<link rel="canonical" href="https://zora.co/@nva_kampala">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #222222;
+    --accent: #e8ff4a;
+    --accent2: #ff6b35;
+    --text: #f0f0f0;
+    --muted: #666666;
+    --green: #4aff8c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ─── Custom Cursor ─── */
+  .cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+    mix-blend-mode: difference;
+  }
+
+  .cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease;
+    opacity: 0.5;
+  }
+
+  /* Cursor grow on hover */
+  body.hovering .cursor { width: 20px; height: 20px; }
+  body.hovering .cursor-ring { width: 50px; height: 50px; opacity: 0.3; }
+
+  /* ─── Noise Overlay ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.3;
+  }
+
+  /* ─── Navigation ─── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* Hamburger (mobile) */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--text);
+    transition: all 0.3s ease;
+  }
+
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* Mobile nav drawer */
+  .nav-drawer {
+    display: none;
+    position: fixed;
+    top: 61px;
+    left: 0;
+    right: 0;
+    background: rgba(10,10,10,0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem;
+    z-index: 99;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .nav-drawer.open { display: flex; }
+  .nav-drawer a {
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-drawer a:hover { color: var(--accent); }
+
+  /* ─── Hero ─── */
+  .hero {
+    min-height: 90vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 4rem 2rem 3rem;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(232,255,74,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    animation: breathe 6s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 0;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 14vw, 12rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-title span { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 500px;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.35s forwards;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── Buttons ─── */
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border: none;
+    cursor: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--accent2);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    cursor: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ─── Hero Stats ─── */
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.65s forwards;
+  }
+
+  .stat { display: flex; flex-direction: column; gap: 0.25rem; }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .stat-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+
+  .stat-value.green { color: var(--green); }
+
+  /* ─── Ticker ─── */
+  .ticker {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    padding: 0.75rem 0;
+  }
+
+  .ticker-inner {
+    display: flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: ticker 20s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .ticker-item .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── Sections ─── */
+  .section {
+    padding: 6rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-body {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    font-weight: 300;
+  }
+
+  .about-body strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ─── Steps ─── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .step.visible { opacity: 1; transform: translateY(0); }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--border);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+
+  .step:hover .step-num { color: var(--accent); }
+
+  .step-content h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .step-content p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ─── Boost Section ─── */
+  .boost-section {
+    padding: 6rem 2rem;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .boost-section::before {
+    content: '$NVA_KAMPALA';
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20vw;
+    color: rgba(232,255,74,0.03);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -0.02em;
+  }
+
+  .boost-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .boost-inner h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+  }
+
+  .boost-inner h2 span { color: var(--accent); }
+
+  .boost-inner > p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  /* ─── Rewards Grid ─── */
+  .rewards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin: 3rem 0;
+  }
+
+  .reward-card {
+    background: var(--surface);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: background 0.2s;
+  }
+
+  .reward-card:hover { background: #181818; }
+
+  .reward-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .reward-card h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .reward-card p {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ─── Footer ─── */
+  footer {
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ─── Live Dot ─── */
+  .live-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    text-transform: uppercase;
+  }
+
+  .live-dot::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  /* ─── Fade In on Scroll ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── MOBILE RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+
+    nav { padding: 1.2rem 1.25rem; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+
+    .hero {
+      padding: 3rem 1.25rem 2.5rem;
+      min-height: 80vh;
+    }
+
+    .hero-title { font-size: clamp(4.5rem, 20vw, 8rem); }
+    .hero-sub { font-size: 1rem; }
+
+    .hero-stats {
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-value { font-size: 1.4rem; }
+
+    .section { padding: 4rem 1.25rem; }
+
+    .two-col {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .boost-section { padding: 4rem 1.25rem; }
+
+    .rewards-grid {
+      grid-template-columns: 1fr;
+    }
+
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2.5rem 1.25rem;
+      gap: 2rem;
+    }
+
+    .footer-links { gap: 1.25rem; }
+
+    .btn-primary, .btn-secondary {
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-ctas { flex-direction: column; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: clamp(3.5rem, 22vw, 6rem); }
+    .hero-stats { gap: 1rem; }
+    .stat-value { font-size: 1.2rem; }
+    .step { grid-template-columns: 45px 1fr; gap: 1rem; }
+    .step-num { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Sticky Nav -->
+<nav>
+  <a class="nav-logo" href="#">$NVA_KAMPALA</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#boost">Get Boosted</a></li>
+    <li><a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">↗ Zora Profile</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="#about" class="drawer-link">About</a>
+  <a href="#how" class="drawer-link">How It Works</a>
+  <a href="#boost" class="drawer-link">Get Boosted</a>
+  <a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">↗ Zora Profile</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Creator Coin · Base Network · Zora Protocol</div>
+    <h1 class="hero-title">$NVA_<span>KAM</span><br>PALA</h1>
+    <p class="hero-sub">The creator coin of <strong>nva_kampala</strong> — building on-chain from East Africa. Every post fuels the market. Every trade earns rewards.</p>
+    <div class="hero-ctas">
+      <a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener" class="btn-primary">Buy on Zora ↗</a>
+      <a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener" class="btn-secondary">Join via Invite Link</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-label">Network</span>
+      <span class="stat-value">Base</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Total Supply</span>
+      <span class="stat-value">1B</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Creator Earn</span>
+      <span class="stat-value green">1% / trade</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Status</span>
+      <span class="stat-value"><span class="live-dot">Live</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- Ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <div class="ticker-item"><span class="dot"></span> $NVA_KAMPALA · BUY ON ZORA</div>
+    <div class="ticker-item"><span class="dot"></span> CREATOR COIN · BASE NETWORK</div>
+    <div class="ticker-item"><span class="dot"></span> EARN 1% ON EVERY TRADE</div>
+    <div class="ticker-item"><span class="dot"></span> COINBOOST CAMPAIGN LIVE</div>
+    <div class="ticker-item"><span class="dot"></span> BUILT FROM KAMPALA, UGANDA</div>
+    <div class="ticker-item"><span class="dot"></span> POWERED BY ZORA PROTOCOL</div>
+    <div class="ticker-item"><span class="dot"></span> $NVA_KAMPALA · BUY ON ZORA</div>
+    <div class="ticker-item"><span class="dot"></span> CREATOR COIN · BASE NETWORK</div>
+    <div class="ticker-item"><span class="dot"></span> EARN 1% ON EVERY TRADE</div>
+    <div class="ticker-item"><span class="dot"></span> COINBOOST CAMPAIGN LIVE</div>
+    <div class="ticker-item"><span class="dot"></span> BUILT FROM KAMPALA, UGANDA</div>
+    <div class="ticker-item"><span class="dot"></span> POWERED BY ZORA PROTOCOL</div>
+  </div>
+</div>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="section-label">About</div>
+  <div class="two-col">
+    <div class="fade-in">
+      <h2 class="about-title">Creator Economy,<br>On-Chain.</h2>
+    </div>
+    <div class="about-body fade-in">
+      <p><strong>$nva_kampala</strong> is a profile-level Creator Coin on Zora, built on the Base network. It represents the on-chain identity and creative output of nva_kampala — a creator building from <strong>Kampala, Uganda</strong>.</p>
+      <br>
+      <p>Every post made on Zora is automatically paired with this coin. As content gains traction and trading activity increases, value flows directly back to the creator — <strong>no middlemen, no sponsors, no subscriptions.</strong></p>
+      <br>
+      <p>This is a new model for creator economies: transparent, permissionless, and global. Whether you're here to support, speculate, or simply be part of something being built from the ground up — you're early.</p>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="section" id="how">
+  <div class="section-label">How It Works</div>
+  <div class="two-col">
+    <div class="fade-in">
+      <h2 class="about-title">Simple mechanics.<br>Real rewards.</h2>
+      <p class="about-body" style="margin-top: 1rem;">The Zora protocol turns every post and every profile into a tradeable asset. Here's exactly how $nva_kampala generates value.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Buy $nva_kampala</h3>
+          <p>Purchase the coin directly on Zora. It trades through a dedicated Uniswap V4 pool on Base with deep liquidity and anti-sniping protection.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Posts Fuel the Market</h3>
+          <p>Every new post by nva_kampala is paired with this coin, increasing visibility and trading activity — which directly grows market cap.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Everyone Earns</h3>
+          <p>The creator earns 1% on every trade. Referrers earn rewards. Holders benefit from growing market cap as activity increases.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Liquidity Deepens Over Time</h3>
+          <p>20% of all trading fees are locked permanently as pool depth — meaning the coin gets stronger with every trade, not weaker.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Boost CTA -->
+<section class="boost-section" id="boost">
+  <div class="boost-inner">
+    <div class="section-label" style="justify-content: center; text-align: center;">Active Campaign</div>
+    <h2>Coinboost<br><span>is Live.</span></h2>
+    <p>Buy $nva_kampala during the active Coinboost campaign window and earn on-chain rewards on your purchase. Early supporters get the best entry and maximum reward potential.</p>
+    <div class="rewards-grid">
+      <div class="reward-card">
+        <div class="reward-icon">⚡</div>
+        <h4>Trade Rewards</h4>
+        <p>Earn coin rewards on every buy during the boost window. Your purchase works for you.</p>
+      </div>
+      <div class="reward-card">
+        <div class="reward-icon">🔗</div>
+        <h4>Referral Earnings</h4>
+        <p>Share the invite link and earn trade referral rewards every time someone buys through you.</p>
+      </div>
+      <div class="reward-card">
+        <div class="reward-icon">📈</div>
+        <h4>Market Cap Growth</h4>
+        <p>Every trade deepens liquidity permanently. You're not just buying — you're building.</p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener" class="btn-primary">Buy $nva_kampala ↗</a>
+      <a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener" class="btn-secondary">Invite Link</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">$NVA_KAMPALA</div>
+  <ul class="footer-links">
+    <li><a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">Zora Profile ↗</a></li>
+    <li><a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener">Invite Link ↗</a></li>
+    <li><a href="https://coinboost.fun" target="_blank" rel="noopener">Coinboost ↗</a></li>
+  </ul>
+  <div style="font-size: 0.7rem; letter-spacing: 0.05em; font-family: 'DM Mono', monospace; color: var(--muted);">Built on Base · Powered by Zora</div>
+</footer>
+
+<script>
+  // ─── Custom Cursor (desktop only) ───
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
+    });
+
+    function animateRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Cursor grow on interactive elements
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+    });
+  }
+
+  // ─── Mobile Nav Toggle ───
+  const navToggle = document.getElementById('navToggle');
+  const navDrawer = document.getElementById('navDrawer');
+
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navDrawer.classList.toggle('open');
+  });
+
+  // Close drawer when a link is clicked
+  navDrawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      navDrawer.classList.remove('open');
+    });
+  });
+
+  // ─── Intersection Observer: Fade-ins + Steps ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in, .step').forEach(el => observer.observe(el));
+
+  // Stagger step animations
+  document.querySelectorAll('.step').forEach((step, i) => {
+    step.style.transitionDelay = `${i * 0.12}s`;
+  });
+</script>
+</body>
+</html>
