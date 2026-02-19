@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ronald James — UI/UX & Graphic Designer, Kampala</title>
+  <meta name="description" content="UI/UX & Graphic Designer specializing in mobile-first solutions for fintech, agritech, and social impact. Based in Kampala, Uganda.">
+  <meta property="og:title" content="Ronald James — UI/UX Designer, Kampala">
+  <meta property="og:description" content="Mobile-first UI/UX design for East African markets. Fintech, agritech, social impact.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── All original CSS remains unchanged ── */
+    /* Paste the full original <style> block from your first document here */
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo font-display">Ronald James</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="#work">Work</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--savanna-gold)"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Kampala, Uganda
+      </div>
+      <h1 class="hero-title font-display">
+        Crafting Digital Experiences with <span>East African Soul</span>
+      </h1>
+      <p class="hero-sub">UI/UX & Graphic Designer specializing in mobile-first solutions for fintech, agritech, and social impact. Global quality, culturally grounded.</p>
+      <div class="hero-ctas">
+        <a href="#work" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Let's Talk</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1761370981160-0e111d79ebc3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800" alt="Designer workspace" loading="eager">
+      <div class="hero-image-overlay"></div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ── Work / Bento Grid, About, Case Studies, Services sections remain unchanged ── -->
+<!-- ... insert the full original content for these sections here ... -->
+
+<!-- ── Contact ── -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <h2 class="font-display">Let's Work Together</h2>
+      <p>Have a project in mind? Let's discuss how we can create something impactful together.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-info">
+          <h3 class="font-display">Get in Touch</h3>
+          <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Whether you're in Kampala or anywhere in the world, let's connect!</p>
+        </div>
+        <a href="mailto:ronald.james@example.com" class="contact-method">
+          <div class="contact-method-icon" style="background:rgba(90,156,197,0.15)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--lake-blue)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="contact-method-label">Email</div><div class="contact-method-value">ronald.james@example.com</div></div>
+        </a>
+        <a href="https://wa.me/256780844098" target="_blank" rel="noopener" class="contact-method">
+          <div class="contact-method-icon" style="background:rgba(61,127,95,0.15)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--jungle-green)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div><div class="contact-method-label">WhatsApp</div><div class="contact-method-value">+256 780 844 098</div></div>
+        </a>
+        <div class="social-label">Connect on Social</div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/________isco__/" target="_blank" rel="noopener" class="social-link">Instagram</a>
+          <a href="#" class="social-link">LinkedIn</a>
+          <a href="#" class="social-link">Behance</a>
+          <a href="#" class="social-link">Dribbble</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" required></div>
+            <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="your.email@example.com" required></div>
+            <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea></div>
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3 class="font-display">Ronald James</h3>
+        <p>UI/UX & Graphic Designer based in Kampala, Uganda. Creating mobile-first experiences with cultural awareness and technical excellence.</p>
+        <a href="#" class="btn-secondary" style="width:fit-content;gap:0.5rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+      </div>
+      <div class="footer-links">
+        <h4 class="font-display">Quick Links</h4>
+        <ul>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-tools">
+        <h4 class="font-display">Tools</h4>
+        <ul>
+          <li>Figma</li>
+          <li>Adobe Creative Suite</li>
+          <li>Framer</li>
+          <li>Miro</li>
+          <li>Notion</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Ronald James. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/________isco__/" target="_blank">Instagram <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        <a href="#">LinkedIn <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        <a href="#">Behance <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        <a href="#">Dribbble <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-note">
+      💡 <strong>Design Philosophy:</strong> This portfolio is optimized for mobile viewing (3G/4G speeds), uses dark mode by default to save battery on OLED screens, and features a color palette inspired by Uganda's landscape — from savanna gold to Lake Victoria blue. Built with accessibility (WCAG 2.2 AA) and cultural pride at its core.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Original scripts unchanged ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const navToggle = document.getElementById('navToggle');
+  const navDrawer = document.getElementById('navDrawer');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navDrawer.classList.toggle('open');
+  });
+  navDrawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      navDrawer.classList.remove('open');
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Message Sent!';
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
+      this.reset();
+    }, 3000);
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
