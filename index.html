@@ -570,7 +570,7 @@
       font-weight: 700;
     }
 
-    .token-dot.eth { background: linear-gradient(135deg, #627EEA, #8EA5F0); color: #fff; }
+    .token-dot.eth { background: linear-gradient(135deg, #2775CA, #5B9BD5); color: #fff; }
     .token-dot.nva { background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; }
 
     .token-symbol {
@@ -992,8 +992,8 @@
               <input class="swap-input" id="swap-from-input" type="number" placeholder="0.00" min="0" step="any" />
             </div>
             <div class="swap-token-pill">
-              <div class="token-dot eth">E</div>
-              <span class="token-symbol" id="from-symbol">ETH</span>
+              <div class="token-dot eth">$</div>
+              <span class="token-symbol" id="from-symbol">USDC</span>
             </div>
           </div>
 
@@ -1027,7 +1027,7 @@
         </div>
         <div class="swap-info-row">
           <span class="swap-info-item">Slippage <span>Auto</span></span>
-          <span class="swap-info-item">Network <span>Base</span></span>
+          <span class="swap-info-item">Pair <span>USDC / $NVA</span></span>
           <span class="swap-info-item">Protocol <span>Zora / Uniswap V4</span></span>
         </div>
       </div>
@@ -1375,18 +1375,20 @@
   // ─────────────────────────────────────────────
   // SWAP CALCULATOR
   // ─────────────────────────────────────────────
-  let swapDirection = 'eth-to-nva'; // or 'nva-to-eth'
+  let swapDirection = 'usdc-to-nva'; // or 'nva-to-usdc'
+
+  // USDC price: derive from ETH price * ETH/USD (~3200)
+  function usdcPerNva() { return S.price * 3200; }   // price of 1 NVA in USDC
+  function nvaPerUsdc() { return 1 / usdcPerNva(); }  // NVA you get per 1 USDC
 
   function updateSwapRate() {
     const rateEl = document.getElementById('swap-rate-display');
     if (!rateEl) return;
-    const nvaPerEth = 1 / S.price;
-    if (swapDirection === 'eth-to-nva') {
-      rateEl.textContent = '1 ETH = ' + Math.round(nvaPerEth).toLocaleString() + ' $NVA_KAMPALA';
+    if (swapDirection === 'usdc-to-nva') {
+      rateEl.textContent = '1 USDC = ' + Math.round(nvaPerUsdc()).toLocaleString() + ' $NVA_KAMPALA';
     } else {
-      rateEl.textContent = '1 $NVA = ' + S.price.toFixed(8) + ' ETH';
+      rateEl.textContent = '1 $NVA = $' + usdcPerNva().toFixed(6) + ' USDC';
     }
-    // Recalculate output
     calcSwapOutput();
   }
 
@@ -1396,33 +1398,29 @@
     if (!fromInput || !toInput) return;
     const val = parseFloat(fromInput.value);
     if (isNaN(val) || val <= 0) { toInput.value = ''; return; }
-    const nvaPerEth = 1 / S.price;
     let out;
-    if (swapDirection === 'eth-to-nva') {
-      out = val * nvaPerEth * 0.99; // minus 1% fee
+    if (swapDirection === 'usdc-to-nva') {
+      out = val * nvaPerUsdc() * 0.99; // minus 1% fee
       toInput.value = Math.round(out).toLocaleString();
     } else {
-      out = val * S.price * 0.99;
-      toInput.value = out.toFixed(8);
+      out = val * usdcPerNva() * 0.99;
+      toInput.value = '$' + out.toFixed(4);
     }
   }
 
   function flipSwap() {
-    swapDirection = swapDirection === 'eth-to-nva' ? 'nva-to-eth' : 'eth-to-nva';
+    swapDirection = swapDirection === 'usdc-to-nva' ? 'nva-to-usdc' : 'usdc-to-nva';
     const fromSym = document.getElementById('from-symbol');
     const toSym = document.getElementById('to-symbol');
     const fromDot = document.querySelector('#field-from .token-dot');
     const toDot = document.querySelector('#field-to .token-dot');
 
-    if (swapDirection === 'eth-to-nva') {
-      fromSym.textContent = 'ETH'; toDot.textContent = 'N'; toSym.textContent = '$NVA';
-      fromDot.className = 'token-dot eth'; fromDot.textContent = 'E';
-      toDot.className = 'token-dot nva'; toDot.textContent = 'N';
+    if (swapDirection === 'usdc-to-nva') {
+      fromDot.className = 'token-dot eth'; fromDot.textContent = '$'; fromSym.textContent = 'USDC';
+      toDot.className = 'token-dot nva'; toDot.textContent = 'N'; toSym.textContent = '$NVA';
     } else {
-      fromSym.textContent = '$NVA'; fromDot.textContent = 'N';
-      toSym.textContent = 'ETH';
-      fromDot.className = 'token-dot nva'; fromDot.textContent = 'N';
-      toDot.className = 'token-dot eth'; toDot.textContent = 'E';
+      fromDot.className = 'token-dot nva'; fromDot.textContent = 'N'; fromSym.textContent = '$NVA';
+      toDot.className = 'token-dot eth'; toDot.textContent = '$'; toSym.textContent = 'USDC';
     }
     document.getElementById('swap-from-input').value = '';
     document.getElementById('swap-to-input').value = '';
