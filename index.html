@@ -1,958 +1,1560 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>$NVA_KAMPALA — Creator Coin on Zora</title>
-
-<!-- SEO Meta Tags -->
-<meta name="description" content="$nva_kampala is a Creator Coin on Zora, built on the Base network. Building on-chain from Kampala, Uganda. Every post fuels the market. Every trade earns rewards.">
-<meta name="keywords" content="nva_kampala, creator coin, Zora, Base network, crypto, Uganda, Kampala, Web3">
-<meta name="author" content="nva_kampala">
-<meta name="robots" content="index, follow">
-
-<!-- Open Graph / Social Sharing -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://zora.co/@nva_kampala">
-<meta property="og:title" content="$NVA_KAMPALA — Creator Coin on Zora">
-<meta property="og:description" content="Building on-chain from East Africa. Every post fuels the market. Every trade earns rewards. Buy $nva_kampala on Zora.">
-<meta property="og:image" content="https://zora.co/@nva_kampala/og-image">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="$NVA_KAMPALA — Creator Coin on Zora">
-<meta name="twitter:description" content="Building on-chain from East Africa. Every post fuels the market. Every trade earns rewards.">
-
-<link rel="canonical" href="https://zora.co/@nva_kampala">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-  :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --border: #222222;
-    --accent: #e8ff4a;
-    --accent2: #ff6b35;
-    --text: #f0f0f0;
-    --muted: #666666;
-    --green: #4aff8c;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    overflow-x: hidden;
-    cursor: none;
-  }
-
-  /* ─── Custom Cursor ─── */
-  .cursor {
-    position: fixed;
-    width: 12px;
-    height: 12px;
-    background: var(--accent);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
-    mix-blend-mode: difference;
-  }
-
-  .cursor-ring {
-    position: fixed;
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--accent);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease;
-    opacity: 0.5;
-  }
-
-  /* Cursor grow on hover */
-  body.hovering .cursor { width: 20px; height: 20px; }
-  body.hovering .cursor-ring { width: 50px; height: 50px; opacity: 0.3; }
-
-  /* ─── Noise Overlay ─── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.3;
-  }
-
-  /* ─── Navigation ─── */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(10, 10, 10, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--text); }
-
-  /* Hamburger (mobile) */
-  .nav-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-  }
-
-  .nav-toggle span {
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--text);
-    transition: all 0.3s ease;
-  }
-
-  .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-  .nav-toggle.open span:nth-child(2) { opacity: 0; }
-  .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-  /* Mobile nav drawer */
-  .nav-drawer {
-    display: none;
-    position: fixed;
-    top: 61px;
-    left: 0;
-    right: 0;
-    background: rgba(10,10,10,0.98);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 2rem;
-    z-index: 99;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .nav-drawer.open { display: flex; }
-  .nav-drawer a {
-    color: var(--muted);
-    text-decoration: none;
-    font-family: 'DM Mono', monospace;
-    font-size: 1rem;
-    letter-spacing: 0.1em;
-    transition: color 0.2s;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-drawer a:hover { color: var(--accent); }
-
-  /* ─── Hero ─── */
-  .hero {
-    min-height: 90vh;
-    display: grid;
-    grid-template-rows: 1fr auto;
-    padding: 4rem 2rem 3rem;
-    position: relative;
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(232,255,74,0.06) 0%, transparent 70%);
-    pointer-events: none;
-    animation: breathe 6s ease-in-out infinite;
-  }
-
-  @keyframes breathe {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.1); }
-  }
-
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem 0;
-    max-width: 900px;
-  }
-
-  .hero-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.1s forwards;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(5rem, 14vw, 12rem);
-    line-height: 0.9;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.2s forwards;
-  }
-
-  .hero-title span { color: var(--accent); }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--muted);
-    max-width: 500px;
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.35s forwards;
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.5s forwards;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ─── Buttons ─── */
-  .btn-primary {
-    background: var(--accent);
-    color: #000;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    border: none;
-    cursor: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: inline-block;
-  }
-
-  .btn-primary:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--accent2);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    border: 1px solid var(--border);
-    cursor: none;
-    transition: border-color 0.2s, color 0.2s;
-    display: inline-block;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  /* ─── Hero Stats ─── */
-  .hero-stats {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    flex-wrap: wrap;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.65s forwards;
-  }
-
-  .stat { display: flex; flex-direction: column; gap: 0.25rem; }
-
-  .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  .stat-value {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    color: var(--text);
-    letter-spacing: 0.05em;
-  }
-
-  .stat-value.green { color: var(--green); }
-
-  /* ─── Ticker ─── */
-  .ticker {
-    overflow: hidden;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-    padding: 0.75rem 0;
-  }
-
-  .ticker-inner {
-    display: flex;
-    gap: 3rem;
-    white-space: nowrap;
-    animation: ticker 20s linear infinite;
-  }
-
-  .ticker-item {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-shrink: 0;
-  }
-
-  .ticker-item .dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-
-  @keyframes ticker {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  /* ─── Sections ─── */
-  .section {
-    padding: 6rem 2rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 3rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .about-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1;
-    margin-bottom: 1.5rem;
-  }
-
-  .about-body {
-    color: var(--muted);
-    line-height: 1.8;
-    font-size: 0.95rem;
-    font-weight: 300;
-  }
-
-  .about-body strong {
-    color: var(--text);
-    font-weight: 600;
-  }
-
-  /* ─── Steps ─── */
-  .steps {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .step {
-    display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 1.5rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  .step.visible { opacity: 1; transform: translateY(0); }
-
-  .step-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
-    color: var(--border);
-    line-height: 1;
-    transition: color 0.3s;
-  }
-
-  .step:hover .step-num { color: var(--accent); }
-
-  .step-content h3 {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-  }
-
-  .step-content p {
-    color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  /* ─── Boost Section ─── */
-  .boost-section {
-    padding: 6rem 2rem;
-    background: var(--surface);
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .boost-section::before {
-    content: '$NVA_KAMPALA';
-    position: absolute;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20vw;
-    color: rgba(232,255,74,0.03);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-    pointer-events: none;
-    letter-spacing: -0.02em;
-  }
-
-  .boost-inner {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .boost-inner h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 7vw, 6rem);
-    line-height: 0.95;
-    margin-bottom: 1.5rem;
-  }
-
-  .boost-inner h2 span { color: var(--accent); }
-
-  .boost-inner > p {
-    color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-  }
-
-  /* ─── Rewards Grid ─── */
-  .rewards-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin: 3rem 0;
-  }
-
-  .reward-card {
-    background: var(--surface);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    transition: background 0.2s;
-  }
-
-  .reward-card:hover { background: #181818; }
-
-  .reward-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .reward-card h4 {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  .reward-card p {
-    color: var(--muted);
-    font-size: 0.85rem;
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  /* ─── Footer ─── */
-  footer {
-    padding: 3rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.2rem;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    flex-wrap: wrap;
-  }
-
-  .footer-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--accent); }
-
-  /* ─── Live Dot ─── */
-  .live-dot {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: var(--green);
-    text-transform: uppercase;
-  }
-
-  .live-dot::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: var(--green);
-    border-radius: 50%;
-    animation: pulse 1.5s ease-in-out infinite;
-    flex-shrink: 0;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.8); }
-  }
-
-  /* ─── Fade In on Scroll ─── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ─── MOBILE RESPONSIVE ─── */
-  @media (max-width: 768px) {
-    body { cursor: auto; }
-    .cursor, .cursor-ring { display: none; }
-
-    nav { padding: 1.2rem 1.25rem; }
-    .nav-links { display: none; }
-    .nav-toggle { display: flex; }
-
-    .hero {
-      padding: 3rem 1.25rem 2.5rem;
-      min-height: 80vh;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$NVA_KAMPALA — Creator Coin on Zora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1e1e1e;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --text: #e5e5e5;
+      --muted: #666;
+      --white: #fff;
+      --ticker-bg: #0f0f0f;
     }
 
-    .hero-title { font-size: clamp(4.5rem, 20vw, 8rem); }
-    .hero-sub { font-size: 1rem; }
+    html { scroll-behavior: smooth; }
 
-    .hero-stats {
-      gap: 1.5rem;
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-links a[href*="zora"] {
+      color: var(--accent-light);
+    }
+
+    /* ── Ticker ── */
+    .ticker {
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      z-index: 99;
+      background: var(--ticker-bg);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      height: 34px;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 3rem;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-track span {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--accent-light);
+      text-transform: uppercase;
+    }
+
+    .ticker-track .dot {
+      color: var(--muted);
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Sections ── */
+    section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 120px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-label span { margin: 0 0.4rem; }
+
+    .hero-title {
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+
+    .hero-title .highlight { color: var(--accent-light); }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .hero-sub strong { color: var(--text); }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
-    .stat-value { font-size: 1.4rem; }
-
-    .section { padding: 4rem 1.25rem; }
-
-    .two-col {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
+    .btn-primary {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
     }
 
-    .boost-section { padding: 4rem 1.25rem; }
+    .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
 
-    .rewards-grid {
-      grid-template-columns: 1fr;
+    .btn-secondary {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
     }
 
+    .btn-secondary:hover { border-color: var(--accent-light); color: var(--accent-light); transform: translateY(-1px); }
+
+    /* ── Stats Row ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+
+    .stat-cell {
+      background: var(--surface);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* ── Section Header ── */
+    .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-body {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 600px;
+      line-height: 1.9;
+    }
+
+    .section-body strong { color: var(--text); }
+
+    .section-body p + p { margin-top: 1rem; }
+
+    /* ── How It Works ── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .step-card {
+      background: var(--surface);
+      padding: 2rem;
+    }
+
+    .step-number {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--accent-light);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .step-body {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── Coinboost ── */
+    #boost {
+      border-top: 1px solid var(--border);
+    }
+
+    .boost-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .boost-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+
+    .boost-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .boost-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .boost-card-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .boost-card-body {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .boost-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── Footer ── */
     footer {
-      flex-direction: column;
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      display: flex;
       align-items: flex-start;
-      padding: 2.5rem 1.25rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
       gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    .footer-links { gap: 1.25rem; }
+    .footer-brand {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
 
-    .btn-primary, .btn-secondary {
-      cursor: pointer;
+    .footer-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent-light); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .boost-cards { grid-template-columns: 1fr; }
+      .chart-meta-row { grid-template-columns: 1fr 1fr; }
+      .chart-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+
+    /* ── Hero Layout (2-col) ── */
+    #hero {
+      display: grid !important;
+      grid-template-columns: 1fr 420px;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-left { display: flex; flex-direction: column; }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* ── Mini Sparkline Card ── */
+    .hero-spark-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .spark-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.1rem 0.5rem;
+    }
+
+    .spark-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .spark-coin { font-family: 'Space Mono', monospace; font-size: 0.7rem; font-weight: 700; color: var(--white); }
+    .spark-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      color: #4ade80;
+      background: rgba(74,222,128,0.1);
+      border: 1px solid rgba(74,222,128,0.25);
+      border-radius: 3px;
+      padding: 0.1rem 0.4rem;
+    }
+
+    .spark-price-group { text-align: right; }
+    .spark-price {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .spark-change {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+    .spark-change.up { color: #4ade80; }
+    .spark-change.down { color: #f87171; }
+
+    .spark-canvas-wrap {
+      height: 90px;
+      padding: 0 0.25rem;
+      position: relative;
+    }
+
+    .spark-canvas-wrap canvas { width: 100% !important; height: 100% !important; }
+
+    .spark-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 1.1rem 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .spark-stat { }
+    .spark-stat-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+    .spark-stat-val { font-family: 'Space Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--white); margin-top: 0.15rem; }
+
+    /* ── Swap Calculator ── */
+    .swap-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .swap-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .swap-card-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .swap-fee-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      color: var(--accent-light);
+      background: rgba(167,139,250,0.1);
+      border: 1px solid rgba(167,139,250,0.25);
+      border-radius: 3px;
+      padding: 0.1rem 0.4rem;
+    }
+
+    .swap-body { padding: 0.9rem 1.1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .swap-field {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 0.7rem 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      transition: border-color 0.2s;
+    }
+
+    .swap-field:focus-within { border-color: var(--accent); }
+
+    .swap-field-left { flex: 1; min-width: 0; }
+
+    .swap-field-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .swap-input {
       width: 100%;
-      text-align: center;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
     }
 
-    .hero-ctas { flex-direction: column; }
-  }
+    .swap-input::placeholder { color: #333; }
 
-  @media (max-width: 480px) {
-    .hero-title { font-size: clamp(3.5rem, 22vw, 6rem); }
-    .hero-stats { gap: 1rem; }
-    .stat-value { font-size: 1.2rem; }
-    .step { grid-template-columns: 45px 1fr; gap: 1rem; }
-    .step-num { font-size: 2rem; }
-  }
-</style>
+    .swap-token-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.3rem 0.7rem 0.3rem 0.5rem;
+      white-space: nowrap;
+    }
+
+    .token-dot {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      font-weight: 700;
+    }
+
+    .token-dot.eth { background: linear-gradient(135deg, #627EEA, #8EA5F0); color: #fff; }
+    .token-dot.nva { background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; }
+
+    .token-symbol {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .swap-arrow-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .swap-arrow-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.75rem;
+      color: var(--muted);
+      transition: all 0.2s;
+      z-index: 1;
+    }
+
+    .swap-arrow-btn:hover { border-color: var(--accent); color: var(--accent-light); transform: rotate(180deg); }
+
+    .swap-rate-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0.2rem;
+    }
+
+    .swap-rate-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+    .swap-rate-val { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--accent-light); }
+
+    .swap-btn {
+      width: 100%;
+      padding: 0.8rem;
+      background: var(--accent);
+      border: none;
+      border-radius: 7px;
+      color: var(--white);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .swap-btn:hover { background: #6d28d9; transform: translateY(-1px); }
+    .swap-btn:active { transform: translateY(0); }
+
+    .swap-info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 1.1rem 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .swap-info-item { font-family: 'Space Mono', monospace; font-size: 0.58rem; color: var(--muted); }
+    .swap-info-item span { color: var(--text); }
+
+    /* ── Responsive hero ── */
+    @media (max-width: 860px) {
+      #hero { grid-template-columns: 1fr !important; }
+      .hero-right { order: -1; }
+    }
+
+    /* ── Live Chart ── */
+    #chart {
+      border-top: 1px solid var(--border);
+    }
+
+    .chart-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .chart-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .live-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px #4ade80;
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+
+    .chart-coin-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.06em;
+    }
+
+    .live-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: #4ade80;
+      background: rgba(74,222,128,0.1);
+      border: 1px solid rgba(74,222,128,0.3);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .chart-price-now {
+      text-align: right;
+    }
+
+    .price-big {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .price-change {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-top: 0.2rem;
+    }
+
+    .price-change.up { color: #4ade80; }
+    .price-change.down { color: #f87171; }
+
+    .chart-canvas-wrap {
+      padding: 0.5rem 0.5rem 0;
+      position: relative;
+      height: 260px;
+    }
+
+    .chart-canvas-wrap canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .chart-meta-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-top: 1px solid var(--border);
+    }
+
+    .chart-meta-cell {
+      background: var(--surface);
+      padding: 1rem 1.25rem;
+    }
+
+    .chart-meta-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .chart-meta-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .chart-meta-value.green { color: #4ade80; }
+    .chart-meta-value.red { color: #f87171; }
+
+    .chart-timeframe {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    .tf-btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tf-btn:hover { color: var(--white); border-color: var(--border); }
+    .tf-btn.active {
+      background: rgba(167,139,250,0.15);
+      border-color: rgba(167,139,250,0.4);
+      color: var(--accent-light);
+    }
+
+    .chart-order-book {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border-top: 1px solid var(--border);
+    }
+
+    .order-side {
+      background: var(--surface);
+      padding: 1rem 1.25rem;
+    }
+
+    .order-side-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .order-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.35rem;
+      position: relative;
+    }
+
+    .order-bar {
+      position: absolute;
+      top: 0; bottom: 0;
+      border-radius: 2px;
+      opacity: 0.12;
+    }
+
+    .order-bar.buy { background: #4ade80; left: 0; }
+    .order-bar.sell { background: #f87171; right: 0; }
+
+    .order-price {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .order-price.buy { color: #4ade80; }
+    .order-price.sell { color: #f87171; }
+
+    .order-size {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .chart-disclaimer {
+      padding: 0.6rem 1.5rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      opacity: 0.6;
+    }
+  </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">$NVA_KAMPALA</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#chart">Live Chart</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#boost">Get Boosted</a></li>
+      <li><a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">↗ Zora Profile</a></li>
+    </ul>
+  </nav>
 
-<!-- Sticky Nav -->
-<nav>
-  <a class="nav-logo" href="#">$NVA_KAMPALA</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#how">How It Works</a></li>
-    <li><a href="#boost">Get Boosted</a></li>
-    <li><a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">↗ Zora Profile</a></li>
-  </ul>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- Mobile Drawer -->
-<div class="nav-drawer" id="navDrawer">
-  <a href="#about" class="drawer-link">About</a>
-  <a href="#how" class="drawer-link">How It Works</a>
-  <a href="#boost" class="drawer-link">Get Boosted</a>
-  <a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">↗ Zora Profile</a>
-</div>
-
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-tag">Creator Coin · Base Network · Zora Protocol</div>
-    <h1 class="hero-title">$NVA_<span>KAM</span><br>PALA</h1>
-    <p class="hero-sub">The creator coin of <strong>nva_kampala</strong> — building on-chain from East Africa. Every post fuels the market. Every trade earns rewards.</p>
-    <div class="hero-ctas">
-      <a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener" class="btn-primary">Buy on Zora ↗</a>
-      <a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener" class="btn-secondary">Join via Invite Link</a>
+  <!-- Ticker -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>$NVA_KAMPALA</span><span class="dot">·</span>
+      <span>BUY ON ZORA</span><span class="dot">·</span>
+      <span>CREATOR COIN</span><span class="dot">·</span>
+      <span>BASE NETWORK</span><span class="dot">·</span>
+      <span>EARN 1% ON EVERY TRADE</span><span class="dot">·</span>
+      <span>COINBOOST CAMPAIGN LIVE</span><span class="dot">·</span>
+      <span>BUILT FROM KAMPALA, UGANDA</span><span class="dot">·</span>
+      <span>POWERED BY ZORA PROTOCOL</span><span class="dot">·</span>
+      <!-- duplicate for seamless loop -->
+      <span>$NVA_KAMPALA</span><span class="dot">·</span>
+      <span>BUY ON ZORA</span><span class="dot">·</span>
+      <span>CREATOR COIN</span><span class="dot">·</span>
+      <span>BASE NETWORK</span><span class="dot">·</span>
+      <span>EARN 1% ON EVERY TRADE</span><span class="dot">·</span>
+      <span>COINBOOST CAMPAIGN LIVE</span><span class="dot">·</span>
+      <span>BUILT FROM KAMPALA, UGANDA</span><span class="dot">·</span>
+      <span>POWERED BY ZORA PROTOCOL</span><span class="dot">·</span>
     </div>
   </div>
 
-  <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-label">Network</span>
-      <span class="stat-value">Base</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Total Supply</span>
-      <span class="stat-value">1B</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Creator Earn</span>
-      <span class="stat-value green">1% / trade</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Status</span>
-      <span class="stat-value"><span class="live-dot">Live</span></span>
-    </div>
-  </div>
-</section>
-
-<!-- Ticker -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-inner">
-    <div class="ticker-item"><span class="dot"></span> $NVA_KAMPALA · BUY ON ZORA</div>
-    <div class="ticker-item"><span class="dot"></span> CREATOR COIN · BASE NETWORK</div>
-    <div class="ticker-item"><span class="dot"></span> EARN 1% ON EVERY TRADE</div>
-    <div class="ticker-item"><span class="dot"></span> COINBOOST CAMPAIGN LIVE</div>
-    <div class="ticker-item"><span class="dot"></span> BUILT FROM KAMPALA, UGANDA</div>
-    <div class="ticker-item"><span class="dot"></span> POWERED BY ZORA PROTOCOL</div>
-    <div class="ticker-item"><span class="dot"></span> $NVA_KAMPALA · BUY ON ZORA</div>
-    <div class="ticker-item"><span class="dot"></span> CREATOR COIN · BASE NETWORK</div>
-    <div class="ticker-item"><span class="dot"></span> EARN 1% ON EVERY TRADE</div>
-    <div class="ticker-item"><span class="dot"></span> COINBOOST CAMPAIGN LIVE</div>
-    <div class="ticker-item"><span class="dot"></span> BUILT FROM KAMPALA, UGANDA</div>
-    <div class="ticker-item"><span class="dot"></span> POWERED BY ZORA PROTOCOL</div>
-  </div>
-</div>
-
-<!-- About -->
-<section class="section" id="about">
-  <div class="section-label">About</div>
-  <div class="two-col">
-    <div class="fade-in">
-      <h2 class="about-title">Creator Economy,<br>On-Chain.</h2>
-    </div>
-    <div class="about-body fade-in">
-      <p><strong>$nva_kampala</strong> is a profile-level Creator Coin on Zora, built on the Base network. It represents the on-chain identity and creative output of nva_kampala — a creator building from <strong>Kampala, Uganda</strong>.</p>
-      <br>
-      <p>Every post made on Zora is automatically paired with this coin. As content gains traction and trading activity increases, value flows directly back to the creator — <strong>no middlemen, no sponsors, no subscriptions.</strong></p>
-      <br>
-      <p>This is a new model for creator economies: transparent, permissionless, and global. Whether you're here to support, speculate, or simply be part of something being built from the ground up — you're early.</p>
-    </div>
-  </div>
-</section>
-
-<!-- How it works -->
-<section class="section" id="how">
-  <div class="section-label">How It Works</div>
-  <div class="two-col">
-    <div class="fade-in">
-      <h2 class="about-title">Simple mechanics.<br>Real rewards.</h2>
-      <p class="about-body" style="margin-top: 1rem;">The Zora protocol turns every post and every profile into a tradeable asset. Here's exactly how $nva_kampala generates value.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-content">
-          <h3>Buy $nva_kampala</h3>
-          <p>Purchase the coin directly on Zora. It trades through a dedicated Uniswap V4 pool on Base with deep liquidity and anti-sniping protection.</p>
-        </div>
+  <!-- Hero -->
+  <section id="hero">
+    <!-- LEFT: copy -->
+    <div class="hero-left">
+      <p class="hero-label">Creator Coin <span>·</span> Base Network <span>·</span> Zora Protocol</p>
+      <h1 class="hero-title">$NVA_<span class="highlight">KAM<br>PALA</span></h1>
+      <p class="hero-sub">
+        The creator coin of <strong>nva_kampala</strong> — building on-chain from East Africa.
+        Every post fuels the market. Every trade earns rewards.
+      </p>
+      <div class="hero-actions">
+        <a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener" class="btn-primary">Buy on Zora ↗</a>
+        <a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener" class="btn-secondary">Join via Invite Link</a>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-content">
-          <h3>Posts Fuel the Market</h3>
-          <p>Every new post by nva_kampala is paired with this coin, increasing visibility and trading activity — which directly grows market cap.</p>
+
+      <div class="stats-row" style="margin-top:2.5rem;">
+        <div class="stat-cell">
+          <div class="stat-label">Network</div>
+          <div class="stat-value">Base</div>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-content">
-          <h3>Everyone Earns</h3>
-          <p>The creator earns 1% on every trade. Referrers earn rewards. Holders benefit from growing market cap as activity increases.</p>
+        <div class="stat-cell">
+          <div class="stat-label">Total Supply</div>
+          <div class="stat-value">1B</div>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div class="step-content">
-          <h3>Liquidity Deepens Over Time</h3>
-          <p>20% of all trading fees are locked permanently as pool depth — meaning the coin gets stronger with every trade, not weaker.</p>
+        <div class="stat-cell">
+          <div class="stat-label">Creator Earn</div>
+          <div class="stat-value">1% / trade</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-label">Status</div>
+          <div class="stat-value" style="color: #4ade80;">Live</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- Boost CTA -->
-<section class="boost-section" id="boost">
-  <div class="boost-inner">
-    <div class="section-label" style="justify-content: center; text-align: center;">Active Campaign</div>
-    <h2>Coinboost<br><span>is Live.</span></h2>
-    <p>Buy $nva_kampala during the active Coinboost campaign window and earn on-chain rewards on your purchase. Early supporters get the best entry and maximum reward potential.</p>
-    <div class="rewards-grid">
-      <div class="reward-card">
-        <div class="reward-icon">⚡</div>
-        <h4>Trade Rewards</h4>
-        <p>Earn coin rewards on every buy during the boost window. Your purchase works for you.</p>
+    <!-- RIGHT: mini chart + swap -->
+    <div class="hero-right">
+
+      <!-- Mini Sparkline -->
+      <div class="hero-spark-card">
+        <div class="spark-header">
+          <div class="spark-left">
+            <div class="live-dot"></div>
+            <span class="spark-coin">$NVA_KAMPALA</span>
+            <span class="spark-badge">LIVE</span>
+          </div>
+          <div class="spark-price-group">
+            <div class="spark-price" id="hero-price">0.00000421</div>
+            <div class="spark-change up" id="hero-change">▲ +2.84%</div>
+          </div>
+        </div>
+        <div class="spark-canvas-wrap">
+          <canvas id="heroSparkChart"></canvas>
+        </div>
+        <div class="spark-footer">
+          <div class="spark-stat">
+            <div class="spark-stat-label">24h High</div>
+            <div class="spark-stat-val" id="hero-high">—</div>
+          </div>
+          <div class="spark-stat">
+            <div class="spark-stat-label">24h Low</div>
+            <div class="spark-stat-val" id="hero-low">—</div>
+          </div>
+          <div class="spark-stat">
+            <div class="spark-stat-label">Volume</div>
+            <div class="spark-stat-val" id="hero-vol">—</div>
+          </div>
+          <div class="spark-stat">
+            <div class="spark-stat-label">Mcap</div>
+            <div class="spark-stat-val" id="hero-mcap">—</div>
+          </div>
+        </div>
       </div>
-      <div class="reward-card">
-        <div class="reward-icon">🔗</div>
-        <h4>Referral Earnings</h4>
-        <p>Share the invite link and earn trade referral rewards every time someone buys through you.</p>
+
+      <!-- Swap Calculator -->
+      <div class="swap-card">
+        <div class="swap-card-header">
+          <span class="swap-card-title">Swap</span>
+          <span class="swap-fee-tag">1% Creator Fee</span>
+        </div>
+        <div class="swap-body">
+          <!-- From -->
+          <div class="swap-field" id="field-from">
+            <div class="swap-field-left">
+              <div class="swap-field-label">You Pay</div>
+              <input class="swap-input" id="swap-from-input" type="number" placeholder="0.00" min="0" step="any" />
+            </div>
+            <div class="swap-token-pill">
+              <div class="token-dot eth">E</div>
+              <span class="token-symbol" id="from-symbol">ETH</span>
+            </div>
+          </div>
+
+          <!-- Swap direction -->
+          <div class="swap-arrow-row">
+            <button class="swap-arrow-btn" id="swap-direction-btn" title="Flip">⇅</button>
+          </div>
+
+          <!-- To -->
+          <div class="swap-field" id="field-to">
+            <div class="swap-field-left">
+              <div class="swap-field-label">You Receive</div>
+              <input class="swap-input" id="swap-to-input" type="number" placeholder="0.00" min="0" step="any" readonly />
+            </div>
+            <div class="swap-token-pill">
+              <div class="token-dot nva">N</div>
+              <span class="token-symbol" id="to-symbol">$NVA</span>
+            </div>
+          </div>
+
+          <!-- Rate line -->
+          <div class="swap-rate-row">
+            <span class="swap-rate-label">Rate</span>
+            <span class="swap-rate-val" id="swap-rate-display">1 ETH = — $NVA_KAMPALA</span>
+          </div>
+
+          <!-- CTA -->
+          <button class="swap-btn" onclick="window.open('https://zora.co/@nva_kampala','_blank')">
+            BUY ON ZORA ↗
+          </button>
+        </div>
+        <div class="swap-info-row">
+          <span class="swap-info-item">Slippage <span>Auto</span></span>
+          <span class="swap-info-item">Network <span>Base</span></span>
+          <span class="swap-info-item">Protocol <span>Zora / Uniswap V4</span></span>
+        </div>
       </div>
-      <div class="reward-card">
-        <div class="reward-icon">📈</div>
-        <h4>Market Cap Growth</h4>
-        <p>Every trade deepens liquidity permanently. You're not just buying — you're building.</p>
+
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <p class="section-tag">About</p>
+    <h2 class="section-title">Creator Economy, On-Chain.</h2>
+    <div class="section-body">
+      <p>
+        <strong>$nva_kampala</strong> is a profile-level Creator Coin on Zora, built on the Base network.
+        It represents the on-chain identity and creative output of nva_kampala — a creator building from
+        <strong>Kampala, Uganda</strong>.
+      </p>
+      <p>
+        Every post made on Zora is automatically paired with this coin. As content gains traction and
+        trading activity increases, value flows directly back to the creator —
+        <strong>no middlemen, no sponsors, no subscriptions.</strong>
+      </p>
+      <p>
+        This is a new model for creator economies: transparent, permissionless, and global. Whether
+        you're here to support, speculate, or simply be part of something being built from the ground
+        up — you're early.
+      </p>
+    </div>
+  </section>
+
+  <!-- Live Chart -->
+  <section id="chart">
+    <p class="section-tag">Live Trading</p>
+    <h2 class="section-title">$NVA_KAMPALA Price Chart</h2>
+    <p class="section-body">
+      Real-time simulated price action on the Base network. Every buy and sell moves the curve —
+      watch the market breathe.
+    </p>
+
+    <div class="chart-wrapper">
+      <!-- Header -->
+      <div class="chart-header">
+        <div class="chart-title-group">
+          <div class="live-dot"></div>
+          <span class="chart-coin-label">$NVA_KAMPALA / ETH</span>
+          <span class="live-badge">Live</span>
+          <div class="chart-timeframe" style="margin-left:1rem;">
+            <button class="tf-btn active" data-tf="1m">1M</button>
+            <button class="tf-btn" data-tf="5m">5M</button>
+            <button class="tf-btn" data-tf="1h">1H</button>
+            <button class="tf-btn" data-tf="1d">1D</button>
+          </div>
+        </div>
+        <div class="chart-price-now">
+          <div class="price-big" id="current-price">0.00000421</div>
+          <div class="price-change up" id="price-change">▲ +2.84%</div>
+        </div>
+      </div>
+
+      <!-- Canvas -->
+      <div class="chart-canvas-wrap">
+        <canvas id="priceChart"></canvas>
+      </div>
+
+      <!-- Meta stats -->
+      <div class="chart-meta-row">
+        <div class="chart-meta-cell">
+          <div class="chart-meta-label">24h High</div>
+          <div class="chart-meta-value green" id="stat-high">0.00000451</div>
+        </div>
+        <div class="chart-meta-cell">
+          <div class="chart-meta-label">24h Low</div>
+          <div class="chart-meta-value red" id="stat-low">0.00000389</div>
+        </div>
+        <div class="chart-meta-cell">
+          <div class="chart-meta-label">Volume (24h)</div>
+          <div class="chart-meta-value" id="stat-vol">1.24 ETH</div>
+        </div>
+        <div class="chart-meta-cell">
+          <div class="chart-meta-label">Market Cap</div>
+          <div class="chart-meta-value" id="stat-mcap">$4,210</div>
+        </div>
+      </div>
+
+      <!-- Order book snapshot -->
+      <div class="chart-order-book">
+        <div class="order-side">
+          <div class="order-side-label">Bids (Buy)</div>
+          <div id="bids-list"></div>
+        </div>
+        <div class="order-side">
+          <div class="order-side-label">Asks (Sell)</div>
+          <div id="asks-list"></div>
+        </div>
+      </div>
+
+      <div class="chart-disclaimer">
+        * Price data is simulated for display. Connect to Zora/Base RPC for live on-chain data.
       </div>
     </div>
-    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+  </section>
+
+  <!-- How It Works -->
+  <section id="how">
+    <p class="section-tag">How It Works</p>
+    <h2 class="section-title">Simple mechanics. Real rewards.</h2>
+    <p class="section-body">
+      The Zora protocol turns every post and every profile into a tradeable asset. Here's exactly
+      how $nva_kampala generates value.
+    </p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-title">Buy $nva_kampala</div>
+        <p class="step-body">
+          Purchase the coin directly on Zora. It trades through a dedicated Uniswap V4 pool on Base
+          with deep liquidity and anti-sniping protection.
+        </p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-title">Posts Fuel the Market</div>
+        <p class="step-body">
+          Every new post by nva_kampala is paired with this coin, increasing visibility and trading
+          activity — which directly grows market cap.
+        </p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-title">Everyone Earns</div>
+        <p class="step-body">
+          The creator earns 1% on every trade. Referrers earn rewards. Holders benefit from growing
+          market cap as activity increases.
+        </p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-title">Liquidity Deepens Over Time</div>
+        <p class="step-body">
+          20% of all trading fees are locked permanently as pool depth — meaning the coin gets
+          stronger with every trade, not weaker.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coinboost -->
+  <section id="boost">
+    <p class="boost-tag">Active Campaign</p>
+    <h2 class="section-title">Coinboost is Live.</h2>
+    <p class="section-body">
+      Buy $nva_kampala during the active Coinboost campaign window and earn on-chain rewards on your
+      purchase. Early supporters get the best entry and maximum reward potential.
+    </p>
+
+    <div class="boost-cards">
+      <div class="boost-card">
+        <div class="boost-icon">⚡</div>
+        <div class="boost-card-title">Trade Rewards</div>
+        <p class="boost-card-body">
+          Earn coin rewards on every buy during the boost window. Your purchase works for you.
+        </p>
+      </div>
+      <div class="boost-card">
+        <div class="boost-icon">🔗</div>
+        <div class="boost-card-title">Referral Earnings</div>
+        <p class="boost-card-body">
+          Share the invite link and earn trade referral rewards every time someone buys through you.
+        </p>
+      </div>
+      <div class="boost-card">
+        <div class="boost-icon">📈</div>
+        <div class="boost-card-title">Market Cap Growth</div>
+        <p class="boost-card-body">
+          Every trade deepens liquidity permanently. You're not just buying — you're building.
+        </p>
+      </div>
+    </div>
+
+    <div class="boost-actions">
       <a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener" class="btn-primary">Buy $nva_kampala ↗</a>
       <a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener" class="btn-secondary">Invite Link</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-logo">$NVA_KAMPALA</div>
-  <ul class="footer-links">
-    <li><a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">Zora Profile ↗</a></li>
-    <li><a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener">Invite Link ↗</a></li>
-    <li><a href="https://coinboost.fun" target="_blank" rel="noopener">Coinboost ↗</a></li>
-  </ul>
-  <div style="font-size: 0.7rem; letter-spacing: 0.05em; font-family: 'DM Mono', monospace; color: var(--muted);">Built on Base · Powered by Zora</div>
-</footer>
+  <!-- Footer -->
+  <footer>
+    <div>
+      <div class="footer-brand">$NVA_KAMPALA</div>
+      <div class="footer-sub">Built on Base · Powered by Zora</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">Zora Profile ↗</a></li>
+      <li><a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener">Invite Link ↗</a></li>
+      <li><a href="https://coinboost.fun" target="_blank" rel="noopener">Coinboost ↗</a></li>
+    </ul>
+  </footer>
 
 <script>
-  // ─── Custom Cursor (desktop only) ───
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
+(function() {
+  // ─────────────────────────────────────────────
+  // Shared price state (hero spark + full chart)
+  // ─────────────────────────────────────────────
+  const BASE_PRICE = 0.00000421;
+  const VOLATILITY = 0.012;
+  const UPDATE_MS = 1200;
+  const MAX_POINTS = 80;
+  const SPARK_POINTS = 40;
 
-  if (window.matchMedia('(pointer: fine)').matches) {
-    document.addEventListener('mousemove', (e) => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx + 'px';
-      cursor.style.top = my + 'px';
-    });
+  window._nva = {
+    price: BASE_PRICE,
+    priceHistory: [],
+    labelHistory: [],
+    openPrice: BASE_PRICE,
+    high24: BASE_PRICE * 1.072,
+    low24: BASE_PRICE * 0.925,
+    volume: 1.24,
+  };
 
-    function animateRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animateRing);
+  const S = window._nva;
+
+  // Seed history
+  const now = Date.now();
+  for (let i = MAX_POINTS; i >= 0; i--) {
+    const t = new Date(now - i * UPDATE_MS * 3);
+    const drift = (Math.random() - 0.48) * VOLATILITY;
+    S.price = Math.max(S.price * (1 + drift), 0.000001);
+    S.priceHistory.push(S.price);
+    S.labelHistory.push(t.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }));
+  }
+  S.openPrice = S.priceHistory[0];
+  S.high24 = Math.max(...S.priceHistory) * 1.03;
+  S.low24 = Math.min(...S.priceHistory) * 0.97;
+
+  // ─────────────────────────────────────────────
+  // HERO SPARKLINE
+  // ─────────────────────────────────────────────
+  let heroChart;
+
+  function makeGrad(ctx, area, up) {
+    const g = ctx.createLinearGradient(0, area.top, 0, area.bottom);
+    if (up) {
+      g.addColorStop(0, 'rgba(74,222,128,0.4)');
+      g.addColorStop(1, 'rgba(74,222,128,0.0)');
+    } else {
+      g.addColorStop(0, 'rgba(248,113,113,0.4)');
+      g.addColorStop(1, 'rgba(248,113,113,0.0)');
     }
-    animateRing();
-
-    // Cursor grow on interactive elements
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-    });
+    return g;
   }
 
-  // ─── Mobile Nav Toggle ───
-  const navToggle = document.getElementById('navToggle');
-  const navDrawer = document.getElementById('navDrawer');
+  function initHeroChart() {
+    const ctx = document.getElementById('heroSparkChart').getContext('2d');
+    const isUp = S.price >= S.openPrice;
+    const sparkData = S.priceHistory.slice(-SPARK_POINTS);
+    const sparkLabels = S.labelHistory.slice(-SPARK_POINTS);
 
-  navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('open');
-    navDrawer.classList.toggle('open');
-  });
-
-  // Close drawer when a link is clicked
-  navDrawer.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navToggle.classList.remove('open');
-      navDrawer.classList.remove('open');
-    });
-  });
-
-  // ─── Intersection Observer: Fade-ins + Steps ───
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+    heroChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: sparkLabels,
+        datasets: [{
+          data: sparkData,
+          borderColor: isUp ? '#4ade80' : '#f87171',
+          borderWidth: 1.5,
+          pointRadius: 0,
+          fill: true,
+          backgroundColor: (c) => {
+            const ch = c.chart;
+            if (!ch.chartArea) return 'transparent';
+            return makeGrad(ch.ctx, ch.chartArea, isUp);
+          },
+          tension: 0.4,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 250 },
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+        scales: {
+          x: { display: false },
+          y: { display: false }
+        }
       }
     });
-  }, { threshold: 0.1 });
+    updateHeroDom();
+  }
 
-  document.querySelectorAll('.fade-in, .step').forEach(el => observer.observe(el));
+  function updateHeroDom() {
+    const isUp = S.price >= S.openPrice;
+    const pct = ((S.price - S.openPrice) / S.openPrice * 100);
+    const mcap = Math.round(S.price * 1_000_000_000 * 1000);
 
-  // Stagger step animations
-  document.querySelectorAll('.step').forEach((step, i) => {
-    step.style.transitionDelay = `${i * 0.12}s`;
+    document.getElementById('hero-price').textContent = S.price.toFixed(8);
+    const hc = document.getElementById('hero-change');
+    hc.textContent = (pct >= 0 ? '▲ +' : '▼ ') + pct.toFixed(2) + '%';
+    hc.className = 'spark-change ' + (isUp ? 'up' : 'down');
+    document.getElementById('hero-high').textContent = S.high24.toFixed(8);
+    document.getElementById('hero-low').textContent = S.low24.toFixed(8);
+    document.getElementById('hero-vol').textContent = S.volume.toFixed(2) + ' ETH';
+    document.getElementById('hero-mcap').textContent = '$' + mcap.toLocaleString();
+
+    // update swap rate display
+    updateSwapRate();
+  }
+
+  function tickPrice() {
+    const drift = (Math.random() - 0.485) * VOLATILITY;
+    S.price = Math.max(S.price * (1 + drift), 0.000001);
+    const t = new Date();
+    const label = t.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+
+    S.priceHistory.push(S.price);
+    S.labelHistory.push(label);
+    if (S.priceHistory.length > MAX_POINTS) { S.priceHistory.shift(); S.labelHistory.shift(); }
+    S.high24 = Math.max(S.high24, S.price);
+    S.low24 = Math.min(S.low24, S.price);
+    S.volume += Math.random() * 0.003;
+
+    const isUp = S.price >= S.openPrice;
+
+    // Update hero sparkline
+    if (heroChart) {
+      heroChart.data.labels = S.priceHistory.slice(-SPARK_POINTS);
+      heroChart.data.datasets[0].data = S.priceHistory.slice(-SPARK_POINTS);
+      heroChart.data.datasets[0].borderColor = isUp ? '#4ade80' : '#f87171';
+      heroChart.update('none');
+    }
+    updateHeroDom();
+
+    // Update full chart if exists
+    if (window._fullChart) {
+      window._fullChart.data.labels = S.labelHistory;
+      window._fullChart.data.datasets[0].data = S.priceHistory;
+      window._fullChart.data.datasets[0].borderColor = isUp ? '#4ade80' : '#f87171';
+      window._fullChart.update('none');
+      updateFullChartDom();
+    }
+
+    updateOrderBook();
+  }
+
+  // ─────────────────────────────────────────────
+  // SWAP CALCULATOR
+  // ─────────────────────────────────────────────
+  let swapDirection = 'eth-to-nva'; // or 'nva-to-eth'
+
+  function updateSwapRate() {
+    const rateEl = document.getElementById('swap-rate-display');
+    if (!rateEl) return;
+    const nvaPerEth = 1 / S.price;
+    if (swapDirection === 'eth-to-nva') {
+      rateEl.textContent = '1 ETH = ' + Math.round(nvaPerEth).toLocaleString() + ' $NVA_KAMPALA';
+    } else {
+      rateEl.textContent = '1 $NVA = ' + S.price.toFixed(8) + ' ETH';
+    }
+    // Recalculate output
+    calcSwapOutput();
+  }
+
+  function calcSwapOutput() {
+    const fromInput = document.getElementById('swap-from-input');
+    const toInput = document.getElementById('swap-to-input');
+    if (!fromInput || !toInput) return;
+    const val = parseFloat(fromInput.value);
+    if (isNaN(val) || val <= 0) { toInput.value = ''; return; }
+    const nvaPerEth = 1 / S.price;
+    let out;
+    if (swapDirection === 'eth-to-nva') {
+      out = val * nvaPerEth * 0.99; // minus 1% fee
+      toInput.value = Math.round(out).toLocaleString();
+    } else {
+      out = val * S.price * 0.99;
+      toInput.value = out.toFixed(8);
+    }
+  }
+
+  function flipSwap() {
+    swapDirection = swapDirection === 'eth-to-nva' ? 'nva-to-eth' : 'eth-to-nva';
+    const fromSym = document.getElementById('from-symbol');
+    const toSym = document.getElementById('to-symbol');
+    const fromDot = document.querySelector('#field-from .token-dot');
+    const toDot = document.querySelector('#field-to .token-dot');
+
+    if (swapDirection === 'eth-to-nva') {
+      fromSym.textContent = 'ETH'; toDot.textContent = 'N'; toSym.textContent = '$NVA';
+      fromDot.className = 'token-dot eth'; fromDot.textContent = 'E';
+      toDot.className = 'token-dot nva'; toDot.textContent = 'N';
+    } else {
+      fromSym.textContent = '$NVA'; fromDot.textContent = 'N';
+      toSym.textContent = 'ETH';
+      fromDot.className = 'token-dot nva'; fromDot.textContent = 'N';
+      toDot.className = 'token-dot eth'; toDot.textContent = 'E';
+    }
+    document.getElementById('swap-from-input').value = '';
+    document.getElementById('swap-to-input').value = '';
+    updateSwapRate();
+  }
+
+  // ─────────────────────────────────────────────
+  // FULL CHART (section #chart)
+  // ─────────────────────────────────────────────
+  function initFullChart() {
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    const isUp = S.price >= S.openPrice;
+
+    window._fullChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: S.labelHistory,
+        datasets: [{
+          data: S.priceHistory,
+          borderColor: isUp ? '#4ade80' : '#f87171',
+          borderWidth: 1.5,
+          pointRadius: 0,
+          pointHoverRadius: 4,
+          pointHoverBackgroundColor: isUp ? '#4ade80' : '#f87171',
+          fill: true,
+          backgroundColor: (ctx2) => {
+            const { chart: c } = ctx2;
+            if (!c.chartArea) return 'transparent';
+            return makeGrad(c.ctx, c.chartArea, isUp);
+          },
+          tension: 0.3,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 300, easing: 'easeOutQuart' },
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#0f0f0f',
+            borderColor: '#1e1e1e',
+            borderWidth: 1,
+            titleColor: '#666',
+            bodyColor: '#e5e5e5',
+            titleFont: { family: 'Space Mono, monospace', size: 10 },
+            bodyFont: { family: 'Space Mono, monospace', size: 11 },
+            callbacks: {
+              title: (items) => items[0].label,
+              label: (item) => ' ' + Number(item.raw).toFixed(8) + ' ETH',
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(255,255,255,0.03)', drawTicks: false },
+            border: { display: false },
+            ticks: { color: '#444', font: { family: 'Space Mono, monospace', size: 9 }, maxTicksLimit: 6, maxRotation: 0 }
+          },
+          y: {
+            position: 'right',
+            grid: { color: 'rgba(255,255,255,0.04)', drawTicks: false },
+            border: { display: false },
+            ticks: { color: '#444', font: { family: 'Space Mono, monospace', size: 9 }, maxTicksLimit: 5, callback: (v) => v.toFixed(8) }
+          }
+        }
+      }
+    });
+    updateFullChartDom();
+  }
+
+  function updateFullChartDom() {
+    const pct = ((S.price - S.openPrice) / S.openPrice * 100);
+    const mcap = Math.round(S.price * 1_000_000_000 * 1000);
+    const changeEl = document.getElementById('price-change');
+    if (!changeEl) return;
+    document.getElementById('current-price').textContent = S.price.toFixed(8);
+    changeEl.textContent = (pct >= 0 ? '▲ +' : '▼ ') + pct.toFixed(2) + '%';
+    changeEl.className = 'price-change ' + (pct >= 0 ? 'up' : 'down');
+    document.getElementById('stat-high').textContent = S.high24.toFixed(8);
+    document.getElementById('stat-low').textContent = S.low24.toFixed(8);
+    document.getElementById('stat-vol').textContent = S.volume.toFixed(3) + ' ETH';
+    document.getElementById('stat-mcap').textContent = '$' + mcap.toLocaleString();
+  }
+
+  // ─────────────────────────────────────────────
+  // ORDER BOOK
+  // ─────────────────────────────────────────────
+  function updateOrderBook() {
+    const bids = [], asks = [];
+    for (let i = 0; i < 5; i++) {
+      const bPrice = S.price * (1 - 0.001*(i+1) - Math.random()*0.0005);
+      const aPrice = S.price * (1 + 0.001*(i+1) + Math.random()*0.0005);
+      const bSize = (Math.random()*900000+100000).toFixed(0);
+      const aSize = (Math.random()*900000+100000).toFixed(0);
+      bids.push({ price: bPrice.toFixed(8), size: Number(bSize).toLocaleString(), pct: Math.random()*0.8+0.1 });
+      asks.push({ price: aPrice.toFixed(8), size: Number(aSize).toLocaleString(), pct: Math.random()*0.8+0.1 });
+    }
+    const bl = document.getElementById('bids-list');
+    const al = document.getElementById('asks-list');
+    if (bl) bl.innerHTML = bids.map(b =>
+      `<div class="order-row"><div class="order-bar buy" style="width:${(b.pct*100).toFixed(0)}%"></div><span class="order-price buy">${b.price}</span><span class="order-size">${b.size}</span></div>`
+    ).join('');
+    if (al) al.innerHTML = asks.map(a =>
+      `<div class="order-row"><div class="order-bar sell" style="width:${(a.pct*100).toFixed(0)}%"></div><span class="order-price sell">${a.price}</span><span class="order-size">${a.size}</span></div>`
+    ).join('');
+  }
+
+  // ─────────────────────────────────────────────
+  // BOOT
+  // ─────────────────────────────────────────────
+  window.addEventListener('load', () => {
+    initHeroChart();
+    initFullChart();
+    updateOrderBook();
+
+    // Swap events
+    document.getElementById('swap-from-input').addEventListener('input', calcSwapOutput);
+    document.getElementById('swap-direction-btn').addEventListener('click', flipSwap);
+
+    // Timeframe buttons
+    document.querySelectorAll('.tf-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    setInterval(tickPrice, UPDATE_MS);
   });
+})();
 </script>
 </body>
 </html>
