@@ -15,8 +15,8 @@
       --bg: #0a0a0a;
       --surface: #111111;
       --border: #1e1e1e;
-      --accent: #7c3aed;
-      --accent-light: #a78bfa;
+      --accent: #d97706;
+      --accent-light: #fbbf24;
       --text: #e5e5e5;
       --muted: #666;
       --white: #fff;
@@ -176,7 +176,7 @@
       transition: background 0.2s, transform 0.15s;
     }
 
-    .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
+    .btn-primary:hover { background: #b45309; transform: translateY(-1px); }
 
     .btn-secondary {
       display: inline-block;
@@ -503,8 +503,8 @@
       font-family: 'Space Mono', monospace;
       font-size: 0.55rem;
       color: var(--accent-light);
-      background: rgba(167,139,250,0.1);
-      border: 1px solid rgba(167,139,250,0.25);
+      background: rgba(251,191,36,0.08);
+      border: 1px solid rgba(251,191,36,0.2);
       border-radius: 3px;
       padding: 0.1rem 0.4rem;
     }
@@ -571,7 +571,7 @@
     }
 
     .token-dot.eth { background: linear-gradient(135deg, #2775CA, #5B9BD5); color: #fff; }
-    .token-dot.nva { background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; }
+    .token-dot.nva { background: linear-gradient(135deg, #d97706, #fbbf24); color: #fff; }
 
     .token-symbol {
       font-family: 'Space Mono', monospace;
@@ -629,7 +629,7 @@
       transition: background 0.2s, transform 0.15s;
     }
 
-    .swap-btn:hover { background: #6d28d9; transform: translateY(-1px); }
+    .swap-btn:hover { background: #b45309; transform: translateY(-1px); }
     .swap-btn:active { transform: translateY(0); }
 
     .swap-info-row {
@@ -794,8 +794,8 @@
 
     .tf-btn:hover { color: var(--white); border-color: var(--border); }
     .tf-btn.active {
-      background: rgba(167,139,250,0.15);
-      border-color: rgba(167,139,250,0.4);
+      background: rgba(251,191,36,0.12);
+      border-color: rgba(251,191,36,0.35);
       color: var(--accent-light);
     }
 
@@ -857,6 +857,60 @@
       z-index: 1;
     }
 
+    /* ── Uganda Badge ── */
+    .ug-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      padding: 0.25rem 0.7rem;
+      background: rgba(251,191,36,0.07);
+      border: 1px solid rgba(251,191,36,0.25);
+      border-radius: 20px;
+      color: #fbbf24;
+      margin-top: 1rem;
+      width: fit-content;
+    }
+
+    /* ── Gradient highlight on hero title ── */
+    .hero-title .highlight {
+      background: linear-gradient(135deg, #fbbf24 0%, #f97316 60%, #ef4444 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Glow on accent buttons ── */
+    .btn-primary {
+      box-shadow: 0 0 20px rgba(217,119,6,0.25);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(217,119,6,0.4);
+    }
+
+    /* ── Live dot pulse — amber ── */
+    .live-dot {
+      background: #fbbf24 !important;
+      box-shadow: 0 0 8px #fbbf24 !important;
+    }
+
+    /* ── Stat value accent ── */
+    .stat-value { letter-spacing: 0.02em; }
+
+    /* ── Step number colour ── */
+    .buy-step-num { color: #d97706 !important; }
+
+    /* ── Social card hover border ── */
+    .social-card:hover { border-color: #fbbf24 !important; }
+
+    /* ── Section tag colour ── */
+    .section-tag { color: #fbbf24 !important; }
+    .boost-tag { color: #fbbf24 !important; }
+    .step-number { color: #fbbf24 !important; }
+    .chart-meta-value.green { color: #4ade80; }
+
     .chart-disclaimer {
       padding: 0.6rem 1.5rem;
       font-family: 'Space Mono', monospace;
@@ -864,6 +918,250 @@
       color: var(--muted);
       border-top: 1px solid var(--border);
       opacity: 0.6;
+    }
+
+    /* ── Contract Bar ── */
+    .contract-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .contract-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    .contract-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      white-space: nowrap;
+      background: rgba(251,191,36,0.07);
+      border: 1px solid rgba(251,191,36,0.18);
+      border-radius: 3px;
+      padding: 0.2rem 0.5rem;
+    }
+
+    .contract-address {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 280px;
+    }
+
+    .contract-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .copy-btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.8rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover { border-color: var(--accent-light); color: var(--accent-light); }
+    .copy-btn.copied { border-color: #4ade80; color: #4ade80; }
+
+    .contract-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.8rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .contract-link:hover { border-color: var(--accent-light); color: var(--accent-light); }
+
+    /* ── How to Buy ── */
+    #buy { border-top: 1px solid var(--border); }
+
+    .buy-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .buy-step {
+      background: var(--surface);
+      padding: 1.5rem 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .buy-step-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2.5rem;
+    }
+
+    .buy-step-content {}
+
+    .buy-step-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .buy-step-body {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .buy-step-body a {
+      color: var(--accent-light);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .buy-step-body a:hover { color: var(--white); }
+
+    .buy-step-tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      background: rgba(251,191,36,0.08);
+      border: 1px solid rgba(251,191,36,0.2);
+      color: var(--accent-light);
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* ── Social Section ── */
+    #social { border-top: 1px solid var(--border); }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .social-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: border-color 0.2s;
+      text-decoration: none;
+    }
+
+    .social-card:hover { border-color: var(--accent-light); }
+
+    .social-icon { font-size: 1.4rem; }
+
+    .social-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .social-handle {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent-light);
+    }
+
+    .social-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Live API Banner ── */
+    .live-api-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1rem;
+      background: rgba(74,222,128,0.05);
+      border: 1px solid rgba(74,222,128,0.15);
+      border-radius: 6px;
+    }
+
+    .live-api-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: #4ade80;
+      letter-spacing: 0.1em;
+    }
+
+    .live-api-val {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--muted);
+    }
+
+    /* ── Footer enhanced ── */
+    .footer-link-groups {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link-group-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 640px) {
+      .social-grid { grid-template-columns: 1fr 1fr; }
+      .contract-address { max-width: 160px; }
+      .footer-link-groups { gap: 1.5rem; }
     }
   </style>
 </head>
@@ -876,6 +1174,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#chart">Live Chart</a></li>
       <li><a href="#how">How It Works</a></li>
+      <li><a href="#buy">How to Buy</a></li>
       <li><a href="#boost">Get Boosted</a></li>
       <li><a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">↗ Zora Profile</a></li>
     </ul>
@@ -908,16 +1207,18 @@
   <section id="hero">
     <!-- LEFT: copy -->
     <div class="hero-left">
-      <p class="hero-label">Creator Coin <span>·</span> Base Network <span>·</span> Zora Protocol</p>
+      <p class="hero-label">Creator Coin <span>·</span> Base Network <span>·</span> Zora Protocol <span>·</span> 🇺🇬 Kampala</p>
       <h1 class="hero-title">$NVA_<span class="highlight">KAM<br>PALA</span></h1>
       <p class="hero-sub">
-        The creator coin of <strong>nva_kampala</strong> — building on-chain from East Africa.
+        The creator coin of <strong>nva_kampala</strong> — building on-chain from Kampala, Uganda.
         Every post fuels the market. Every trade earns rewards.
       </p>
       <div class="hero-actions">
         <a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener" class="btn-primary">Buy on Zora ↗</a>
         <a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener" class="btn-secondary">Join via Invite Link</a>
       </div>
+
+      <div class="ug-badge">📍 Kampala, Uganda &nbsp;·&nbsp; On-Chain Creator</div>
 
       <div class="stats-row" style="margin-top:2.5rem;">
         <div class="stat-cell">
@@ -929,12 +1230,25 @@
           <div class="stat-value">1B</div>
         </div>
         <div class="stat-cell">
+          <div class="stat-label">Allocation</div>
+          <div class="stat-value">50 / 50</div>
+        </div>
+        <div class="stat-cell">
           <div class="stat-label">Creator Earn</div>
           <div class="stat-value">1% / trade</div>
         </div>
-        <div class="stat-cell">
-          <div class="stat-label">Status</div>
-          <div class="stat-value" style="color: #4ade80;">Live</div>
+      </div>
+
+      <!-- Contract Address Bar -->
+      <div class="contract-bar">
+        <div class="contract-left">
+          <span class="contract-tag">Contract</span>
+          <span class="contract-address" id="contract-addr">Loading…</span>
+        </div>
+        <div class="contract-actions">
+          <button class="copy-btn" id="copy-contract-btn" onclick="copyContract()">Copy</button>
+          <a class="contract-link" id="basescan-link" href="https://basescan.org" target="_blank" rel="noopener">Basescan ↗</a>
+          <a class="contract-link" id="dex-link" href="https://dexscreener.com/base" target="_blank" rel="noopener">Chart ↗</a>
         </div>
       </div>
     </div>
@@ -993,7 +1307,7 @@
             </div>
             <div class="swap-token-pill">
               <div class="token-dot eth">$</div>
-              <span class="token-symbol" id="from-symbol">USDC</span>
+              <span class="token-symbol" id="from-symbol">ZORA</span>
             </div>
           </div>
 
@@ -1009,7 +1323,7 @@
               <input class="swap-input" id="swap-to-input" type="number" placeholder="0.00" min="0" step="any" readonly />
             </div>
             <div class="swap-token-pill">
-              <div class="token-dot nva">N</div>
+              <div class="token-dot nva">I</div>
               <span class="token-symbol" id="to-symbol">$NVA</span>
             </div>
           </div>
@@ -1017,7 +1331,7 @@
           <!-- Rate line -->
           <div class="swap-rate-row">
             <span class="swap-rate-label">Rate</span>
-            <span class="swap-rate-val" id="swap-rate-display">1 ETH = — $NVA_KAMPALA</span>
+            <span class="swap-rate-val" id="swap-rate-display">1 ZORA = — $NVA_KAMPALA</span>
           </div>
 
           <!-- CTA -->
@@ -1026,8 +1340,8 @@
           </button>
         </div>
         <div class="swap-info-row">
-          <span class="swap-info-item">Slippage <span>Auto</span></span>
-          <span class="swap-info-item">Pair <span>USDC / $NVA</span></span>
+          <span class="swap-info-item">Rewards <span>$ZORA</span></span>
+          <span class="swap-info-item">Pair <span>ZORA / $NVA</span></span>
           <span class="swap-info-item">Protocol <span>Zora / Uniswap V4</span></span>
         </div>
       </div>
@@ -1046,14 +1360,16 @@
         <strong>Kampala, Uganda</strong>.
       </p>
       <p>
-        Every post made on Zora is automatically paired with this coin. As content gains traction and
-        trading activity increases, value flows directly back to the creator —
-        <strong>no middlemen, no sponsors, no subscriptions.</strong>
+        Every post made on Zora is automatically paired with this coin. The total supply is
+        <strong>1 billion coins</strong> — 50% immediately tradeable on the open market, and
+        50% streamed to the creator over 5 years. As content gains traction, value flows
+        directly back — <strong>no middlemen, no sponsors, no subscriptions.</strong>
       </p>
       <p>
-        This is a new model for creator economies: transparent, permissionless, and global. Whether
-        you're here to support, speculate, or simply be part of something being built from the ground
-        up — you're early.
+        Rewards are paid instantly in <strong>$ZORA</strong> on every trade. 20% of all
+        trading fees are locked permanently as liquidity, making the market stronger over time.
+        Whether you're here to support, collect, or be part of something early — this is the
+        new creator economy.
       </p>
     </div>
   </section>
@@ -1072,7 +1388,7 @@
       <div class="chart-header">
         <div class="chart-title-group">
           <div class="live-dot"></div>
-          <span class="chart-coin-label">$NVA_KAMPALA / ETH</span>
+          <span class="chart-coin-label">$NVA_KAMPALA / ZORA</span>
           <span class="live-badge">Live</span>
           <div class="chart-timeframe" style="margin-left:1rem;">
             <button class="tf-btn active" data-tf="1m">1M</button>
@@ -1104,7 +1420,7 @@
         </div>
         <div class="chart-meta-cell">
           <div class="chart-meta-label">Volume (24h)</div>
-          <div class="chart-meta-value" id="stat-vol">1.24 ETH</div>
+          <div class="chart-meta-value" id="stat-vol">— ZORA</div>
         </div>
         <div class="chart-meta-cell">
           <div class="chart-meta-label">Market Cap</div>
@@ -1144,8 +1460,8 @@
         <div class="step-number">01</div>
         <div class="step-title">Buy $nva_kampala</div>
         <p class="step-body">
-          Purchase the coin directly on Zora. It trades through a dedicated Uniswap V4 pool on Base
-          with deep liquidity and anti-sniping protection.
+          Purchase the coin directly on Zora. It trades through a dedicated Uniswap V4 pool on Base,
+          paired with <strong>$ZORA</strong>, with deep liquidity and anti-sniping protection.
         </p>
       </div>
       <div class="step-card">
@@ -1160,8 +1476,8 @@
         <div class="step-number">03</div>
         <div class="step-title">Everyone Earns</div>
         <p class="step-body">
-          The creator earns 1% on every trade. Referrers earn rewards. Holders benefit from growing
-          market cap as activity increases.
+          The creator earns 1% on every trade, paid instantly in <strong>$ZORA</strong>.
+          Referrers earn rewards too. Holders benefit from growing market cap as activity increases.
         </p>
       </div>
       <div class="step-card">
@@ -1214,17 +1530,139 @@
     </div>
   </section>
 
+  <!-- How to Buy -->
+  <section id="buy">
+    <p class="section-tag">Get Started</p>
+    <h2 class="section-title">How to Buy $NVA_KAMPALA</h2>
+    <p class="section-body">
+      New to on-chain coins? Here's exactly how to go from zero to a holder of $NVA_KAMPALA in under five minutes.
+    </p>
+    <div class="buy-steps">
+      <div class="buy-step">
+        <div class="buy-step-num">01</div>
+        <div class="buy-step-content">
+          <div class="buy-step-title">Get a wallet <span class="buy-step-tag">Required</span></div>
+          <p class="buy-step-body">
+            Download <a href="https://coinbase.com/wallet" target="_blank" rel="noopener">Coinbase Wallet</a>
+            or <a href="https://metamask.io" target="_blank" rel="noopener">MetaMask</a> on mobile or desktop.
+            These are free, self-custody wallets — you own your keys.
+          </p>
+        </div>
+      </div>
+      <div class="buy-step">
+        <div class="buy-step-num">02</div>
+        <div class="buy-step-content">
+          <div class="buy-step-title">Add funds to Base <span class="buy-step-tag">Required</span></div>
+          <p class="buy-step-body">
+            Bridge ETH to the Base network, or buy directly on Base via
+            <a href="https://coinbase.com" target="_blank" rel="noopener">Coinbase</a>. You'll need a small
+            amount of ETH for gas fees (usually under $0.01 on Base).
+          </p>
+        </div>
+      </div>
+      <div class="buy-step">
+        <div class="buy-step-num">03</div>
+        <div class="buy-step-content">
+          <div class="buy-step-title">Connect to Zora <span class="buy-step-tag">Required</span></div>
+          <p class="buy-step-body">
+            Go to <a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">zora.co/@nva_kampala</a>
+            and connect your wallet. Zora supports Coinbase Wallet, MetaMask, and WalletConnect.
+          </p>
+        </div>
+      </div>
+      <div class="buy-step">
+        <div class="buy-step-num">04</div>
+        <div class="buy-step-content">
+          <div class="buy-step-title">Buy $NVA_KAMPALA <span class="buy-step-tag">You're in</span></div>
+          <p class="buy-step-body">
+            Click "Buy Coin" on the profile page, enter your amount in $ZORA, confirm the transaction.
+            The coin is in your wallet instantly. Welcome to the community.
+          </p>
+        </div>
+      </div>
+      <div class="buy-step">
+        <div class="buy-step-num">05</div>
+        <div class="buy-step-content">
+          <div class="buy-step-title">Share &amp; earn referrals <span class="buy-step-tag">Optional</span></div>
+          <p class="buy-step-body">
+            Share your
+            <a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener">invite link</a>
+            — every time someone buys through it, you earn referral rewards in $ZORA automatically.
+            No sign-up or extra steps.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social -->
+  <section id="social">
+    <p class="section-tag">Community</p>
+    <h2 class="section-title">Follow the Creator</h2>
+    <p class="section-body">
+      Every post on these platforms is fuel for the coin. Follow along, collect, and be part of what's being built.
+    </p>
+    <div class="social-grid">
+      <a class="social-card" href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">
+        <div class="social-icon">🟡</div>
+        <div class="social-name">Zora</div>
+        <div class="social-handle">@nva_kampala</div>
+        <div class="social-desc">Drops, collectibles, and on-chain activity. Every post here is paired with $NVA_KAMPALA.</div>
+      </a>
+      <a class="social-card" href="https://farcaster.xyz/iscorockie" target="_blank" rel="noopener">
+        <div class="social-icon">🟪</div>
+        <div class="social-name">Farcaster</div>
+        <div class="social-handle">@iscorockie</div>
+        <div class="social-desc">Collect drops directly from your feed. The most crypto-native community for on-chain creators.</div>
+      </a>
+      <a class="social-card" href="https://x.com/isco_rockie" target="_blank" rel="noopener">
+        <div class="social-icon">🐦</div>
+        <div class="social-name">Twitter / X</div>
+        <div class="social-handle">@isco_rockie</div>
+        <div class="social-desc">Updates, announcements, and cultural content. The widest reach for new collector discovery.</div>
+      </a>
+      <a class="social-card" href="https://www.instagram.com/________isco__/" target="_blank" rel="noopener">
+        <div class="social-icon">📸</div>
+        <div class="social-name">Instagram</div>
+        <div class="social-handle">@________isco__</div>
+        <div class="social-desc">Visual content, behind-the-scenes, and drops. Funnel to Zora via the link in bio.</div>
+      </a>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div>
       <div class="footer-brand">$NVA_KAMPALA</div>
-      <div class="footer-sub">Built on Base · Powered by Zora</div>
+      <div class="footer-sub">Built on Base · Powered by Zora Protocol</div>
+      <div class="footer-sub" style="margin-top:0.4rem; font-size:0.7rem;">© 2025 nva_kampala. Not financial advice.</div>
     </div>
-    <ul class="footer-links">
-      <li><a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">Zora Profile ↗</a></li>
-      <li><a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener">Invite Link ↗</a></li>
-      <li><a href="https://coinboost.fun" target="_blank" rel="noopener">Coinboost ↗</a></li>
-    </ul>
+    <div class="footer-link-groups">
+      <div>
+        <div class="footer-link-group-label">Trade</div>
+        <ul class="footer-links">
+          <li><a href="https://zora.co/@nva_kampala" target="_blank" rel="noopener">Zora Profile ↗</a></li>
+          <li><a href="https://zora.co/invite/nva_kampala" target="_blank" rel="noopener">Invite Link ↗</a></li>
+          <li><a href="https://coinboost.fun" target="_blank" rel="noopener">Coinboost ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-link-group-label">On-Chain</div>
+        <ul class="footer-links">
+          <li><a id="footer-basescan" href="https://basescan.org" target="_blank" rel="noopener">Basescan ↗</a></li>
+          <li><a id="footer-dex" href="https://dexscreener.com/base" target="_blank" rel="noopener">Dexscreener ↗</a></li>
+          <li><a href="https://base.org" target="_blank" rel="noopener">Base Network ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-link-group-label">Follow</div>
+        <ul class="footer-links">
+          <li><a href="https://farcaster.xyz/iscorockie" target="_blank" rel="noopener">Farcaster ↗</a></li>
+          <li><a href="https://x.com/isco_rockie" target="_blank" rel="noopener">Twitter / X ↗</a></li>
+          <li><a href="https://www.instagram.com/________isco__/" target="_blank" rel="noopener">Instagram ↗</a></li>
+        </ul>
+      </div>
+    </div>
   </footer>
 
 <script>
@@ -1329,7 +1767,7 @@
     hc.className = 'spark-change ' + (isUp ? 'up' : 'down');
     document.getElementById('hero-high').textContent = S.high24.toFixed(8);
     document.getElementById('hero-low').textContent = S.low24.toFixed(8);
-    document.getElementById('hero-vol').textContent = S.volume.toFixed(2) + ' ETH';
+    document.getElementById('hero-vol').textContent = S.volume.toFixed(2) + ' ZORA';
     document.getElementById('hero-mcap').textContent = '$' + mcap.toLocaleString();
 
     // update swap rate display
@@ -1375,19 +1813,19 @@
   // ─────────────────────────────────────────────
   // SWAP CALCULATOR
   // ─────────────────────────────────────────────
-  let swapDirection = 'usdc-to-nva'; // or 'nva-to-usdc'
+  let swapDirection = 'zora-to-nva'; // or 'nva-to-zora'
 
-  // USDC price: derive from ETH price * ETH/USD (~3200)
-  function usdcPerNva() { return S.price * 3200; }   // price of 1 NVA in USDC
-  function nvaPerUsdc() { return 1 / usdcPerNva(); }  // NVA you get per 1 USDC
+  // ZORA price: approximate ZORA/ISH rate (ZORA is ~$0.04, ISH priced in ZORA)
+  function zoraPerNva() { return S.price * 25000; }   // ISH price in ZORA (approx)
+  function nvaPerZora() { return 1 / zoraPerNva(); }  // ISH you get per 1 ZORA
 
   function updateSwapRate() {
     const rateEl = document.getElementById('swap-rate-display');
     if (!rateEl) return;
-    if (swapDirection === 'usdc-to-nva') {
-      rateEl.textContent = '1 USDC = ' + Math.round(nvaPerUsdc()).toLocaleString() + ' $NVA_KAMPALA';
+    if (swapDirection === 'zora-to-nva') {
+      rateEl.textContent = '1 ZORA = ' + Math.round(nvaPerZora()).toLocaleString() + ' $NVA_KAMPALA';
     } else {
-      rateEl.textContent = '1 $NVA = $' + usdcPerNva().toFixed(6) + ' USDC';
+      rateEl.textContent = '1 $NVA = ' + zoraPerNva().toFixed(4) + ' ZORA';
     }
     calcSwapOutput();
   }
@@ -1399,28 +1837,28 @@
     const val = parseFloat(fromInput.value);
     if (isNaN(val) || val <= 0) { toInput.value = ''; return; }
     let out;
-    if (swapDirection === 'usdc-to-nva') {
-      out = val * nvaPerUsdc() * 0.99; // minus 1% fee
+    if (swapDirection === 'zora-to-nva') {
+      out = val * nvaPerZora() * 0.99; // minus 1% fee
       toInput.value = Math.round(out).toLocaleString();
     } else {
-      out = val * usdcPerNva() * 0.99;
-      toInput.value = '$' + out.toFixed(4);
+      out = val * zoraPerNva() * 0.99;
+      toInput.value = out.toFixed(4) + ' ZORA';
     }
   }
 
   function flipSwap() {
-    swapDirection = swapDirection === 'usdc-to-nva' ? 'nva-to-usdc' : 'usdc-to-nva';
+    swapDirection = swapDirection === 'zora-to-nva' ? 'nva-to-zora' : 'zora-to-nva';
     const fromSym = document.getElementById('from-symbol');
     const toSym = document.getElementById('to-symbol');
     const fromDot = document.querySelector('#field-from .token-dot');
     const toDot = document.querySelector('#field-to .token-dot');
 
-    if (swapDirection === 'usdc-to-nva') {
-      fromDot.className = 'token-dot eth'; fromDot.textContent = '$'; fromSym.textContent = 'USDC';
+    if (swapDirection === 'zora-to-nva') {
+      fromDot.className = 'token-dot eth'; fromDot.textContent = 'Z'; fromSym.textContent = 'ZORA';
       toDot.className = 'token-dot nva'; toDot.textContent = 'N'; toSym.textContent = '$NVA';
     } else {
       fromDot.className = 'token-dot nva'; fromDot.textContent = 'N'; fromSym.textContent = '$NVA';
-      toDot.className = 'token-dot eth'; toDot.textContent = '$'; toSym.textContent = 'USDC';
+      toDot.className = 'token-dot eth'; toDot.textContent = 'Z'; toSym.textContent = 'ZORA';
     }
     document.getElementById('swap-from-input').value = '';
     document.getElementById('swap-to-input').value = '';
@@ -1471,7 +1909,7 @@
             bodyFont: { family: 'Space Mono, monospace', size: 11 },
             callbacks: {
               title: (items) => items[0].label,
-              label: (item) => ' ' + Number(item.raw).toFixed(8) + ' ETH',
+              label: (item) => ' ' + Number(item.raw).toFixed(8) + ' ZORA',
             }
           }
         },
@@ -1503,7 +1941,7 @@
     changeEl.className = 'price-change ' + (pct >= 0 ? 'up' : 'down');
     document.getElementById('stat-high').textContent = S.high24.toFixed(8);
     document.getElementById('stat-low').textContent = S.low24.toFixed(8);
-    document.getElementById('stat-vol').textContent = S.volume.toFixed(3) + ' ETH';
+    document.getElementById('stat-vol').textContent = S.volume.toFixed(3) + ' ZORA';
     document.getElementById('stat-mcap').textContent = '$' + mcap.toLocaleString();
   }
 
@@ -1531,12 +1969,68 @@
   }
 
   // ─────────────────────────────────────────────
+  // CONTRACT ADDRESS & ZORA API
+  // ─────────────────────────────────────────────
+
+  // ⚡ PASTE YOUR CONTRACT ADDRESS HERE once you have it from Zora/Basescan:
+  const CONTRACT_ADDRESS = '';  // e.g. '0xabc123...'
+
+  function setContractUI(addr) {
+    if (!addr) {
+      document.getElementById('contract-addr').textContent = 'Add contract address — see Zora profile';
+      return;
+    }
+    const short = addr.slice(0, 8) + '…' + addr.slice(-6);
+    document.getElementById('contract-addr').textContent = short;
+    document.getElementById('contract-addr').title = addr;
+    document.getElementById('basescan-link').href = 'https://basescan.org/token/' + addr;
+    document.getElementById('footer-basescan').href = 'https://basescan.org/token/' + addr;
+    document.getElementById('dex-link').href = 'https://dexscreener.com/base/' + addr;
+    document.getElementById('footer-dex').href = 'https://dexscreener.com/base/' + addr;
+    window._contractAddr = addr;
+  }
+
+  window.copyContract = function() {
+    const addr = window._contractAddr;
+    if (!addr) return;
+    navigator.clipboard.writeText(addr).then(() => {
+      const btn = document.getElementById('copy-contract-btn');
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  };
+
+  async function fetchZoraCoinData() {
+    try {
+      const res = await fetch('https://api.zora.co/discover/users/nva_kampala', {
+        headers: { 'Accept': 'application/json' }
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      // If the API returns coin data, update the contract address
+      const coin = data?.coin || data?.creatorCoin || data?.coins?.[0];
+      if (coin?.address) setContractUI(coin.address);
+      if (coin?.marketCap) {
+        const mcap = parseFloat(coin.marketCap);
+        if (!isNaN(mcap)) document.getElementById('stat-mcap').textContent = '$' + Math.round(mcap).toLocaleString();
+      }
+    } catch (e) {
+      // API unavailable — contract address shows placeholder
+    }
+  }
+
+  // ─────────────────────────────────────────────
   // BOOT
   // ─────────────────────────────────────────────
   window.addEventListener('load', () => {
     initHeroChart();
     initFullChart();
     updateOrderBook();
+
+    // Set contract address (from hardcoded value or API)
+    setContractUI(CONTRACT_ADDRESS);
+    fetchZoraCoinData(); // attempt live fetch, updates if successful
 
     // Swap events
     document.getElementById('swap-from-input').addEventListener('input', calcSwapOutput);
